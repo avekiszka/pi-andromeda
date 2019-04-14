@@ -11,7 +11,8 @@ def get_dst(help_text="Podaj Adres docelowy: "):
 def get_dp(help_text="Podaj numer portu docelowego: "):
     return int(input(help_text))
 def net_tools():
-    print("Wybierz narzedzie, ktore chcesz uruchomic: \n1) ICMP Ping\n2) Traceroute\n3) TCP Ping\n4) UDP Ping")
+    os.system("clear")
+    print("Wybierz narzedzie, ktore chcesz uruchomic: \n1) ICMP Ping\n2) Traceroute\n3) TCP Ping\n4) UDP Ping\n0) Main Menu")
     ch1 = get_choice("(1/2/3/4): ")
     if ch1 == 1:
         os.system("clear")
@@ -32,15 +33,27 @@ def net_tools():
         print("---UDP-Ping---")
         ans, uans = sr(IP(dst=get_dst())/UDP(dport=0))
         print(ans[0][1].sprintf("Host %IP.src% is alive"))
-
-print("Wybierz Kategorie: \n1) Network Tools\n2) Network Scans\n3) Network Attacks")
-cho1 = get_choice()
-if cho1 == 1:
-    print("Network Tools available")
-    net_tools()
-elif cho1 == 2:
-    print("Network Scans available")
-elif cho1 == 3:
-    print("Network Attacks available")
-else:
-    print("Kategoria nie znaleziona.")
+    elif ch1 == 0:
+        os.system("clear")
+        piandromeda()
+def net_scans():
+    print('soon to come')
+def net_attacks():
+    print('soon to come')
+def piandromeda():
+    print("Wybierz Kategorie: \n1) Network Tools\n2) Network Scans\n3) Network Attacks\n0) Exit")
+    cho1 = get_choice()
+    if cho1 == 1:
+        print("Network Tools available")
+        net_tools()
+    elif cho1 == 2:
+        print("Network Scans available")
+        net_scans()
+    elif cho1 == 3:
+        print("Network Attacks available")
+        net_attacks()
+    elif cho1 == 0:
+        exit()
+    else:
+        print("Kategoria nie znaleziona.")
+piandromeda()
